@@ -2622,12 +2622,12 @@ message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${
 }
  
 if(message.content.startsWith(prefix + "daily")) {
-  if(profile[message.author.id].lastDaily != moment().format('minute')) {
-    profile[message.author.id].lastDaily = moment().format('minute')
-    profile[message.author.id].credits += 9999999999999999999999999999999999999999999999999999
-     message.channel.send(`**${message.author.username} you collect your \`9999999999999999999999999999999999999999999999999999\` :dollar: daily pounds**`)
+  if(profile[message.author.id].lastDaily != moment().format('day')) {
+    profile[message.author.id].lastDaily = moment().format('day')
+    profile[message.author.id].credits += 200
+     message.channel.send(`**${message.author.username} you collect your \`200\` :dollar: daily pounds**`)
 } else {
-    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('minute').fromNow()}**`)
+    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
 }
   }
  
@@ -2650,13 +2650,13 @@ if(message.content.startsWith(prefix + 'trans')) {
             if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
             var mentionned = message.mentions.users.first();
 if (!profile[sender.id]) profile[sender.id] = {}
-if (!profile[sender.id].credits) profile[sender.id].credits = 9999999999999999999999999999999999999999999999999999
+if (!profile[sender.id].credits) profile[sender.id].credits = 200;
 fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
 if (err) console.error(err);
 })
       var mando = message.mentions.users.id;
       if  (!profile[defineduser.id]) profile[defineduser.id] = {}
-      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 9999999999999999999999999999999999999999999999999999;
+      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
       profile[defineduser.id].credits += (+args[0]);
       profile[sender.id].credits += (-args[0]);
       let mariam = message.author.username
@@ -2681,6 +2681,7 @@ message.channel.send(`**:moneybag: | ${message.author.username}, has transferrer
 if (err) console.error(err);
 })
       })
+ 
  
     client.on('message', message => {
         let tit = message.content.split(" ").slice(1).join(" ");
