@@ -242,7 +242,8 @@ client.on('message', message => {
   ** -delet <name> | مسح الشات او الرووم فويس**
 
   ** -ccolors <number> | ينشا لك الوان مع كم الوان تبي**
-
+  
+  **  -setuser |يسويلك روم بعدد الاعضاء  **
   -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 `)
      message.author.sendEmbed(embed)
@@ -374,7 +375,9 @@ client.on('message', message => {
 
   ** -avatar | صورتك او صورة الي تمنشنو**:bust_in_silhouette:
 
-  ** -embed | يكرر الي تقولو بشكل حلو**:small_blue_diamond: 
+  ** -embed | يكرر الي تقولو بشكل حلو**:small_blue_diamond:
+
+  ** -tag @ يتغير تاقك الى تاق الي منشنته| منشن الشخص **
 
   ** -emoji <any things> | لتحويل اي كلمه تقولها الي ايموجي**:small_orange_diamond: 
 
@@ -3257,5 +3260,32 @@ client.on('message', msg => {//Toxic Codes
     
   })//Toxic Codes
 
+client.on('message', msg => {
+  let prefix = '-';//البرفكس
+  let mentions = msg.guild.member(msg.mentions.users.first()); 
+if(msg.content.startsWith(prefix + "tag")){ // -tag @someone
+  
+ msg.channel.send(`**tag [${mentions}] with ID: [${mentions.user.id}]
+ 
+ tag user is [${mentions.user.discriminator}]
+ 
+ sender by ${msg.author}
+ **`);
+
+}
+
+})
+
+lient.on('message',async msg => {//Toxic Codes
+  var prefix = "-";//Toxic Codes
+  if(msg.content.startsWith(prefix + "setuser")) {//Toxic Codes
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **ليس لديك صلاحيه**');//Toxic Codes
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');//Toxic Codes
+  msg.guild.createChannel(`Members : ◤ → ${client.users.size} ← ◢` , 'voice').then(time => {//Toxic Codes
+    });//Toxic Codes
+
+  }
+ 
+});
 
 client.login(process.env.BOT_TOKEN);
