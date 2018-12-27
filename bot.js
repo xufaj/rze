@@ -3260,21 +3260,4 @@ client.on('message', msg => {//Toxic Codes
     
   })//Toxic Codes
 
-client.on('message', msg => {
-  let prefix = '-';//البرفكس
-  let mentions = msg.guild.member(msg.mentions.users.first()); 
-if(msg.content.startsWith(prefix + "tag")){ // -tag @someone
-  
- msg.channel.send(`**tag [${mentions}] with ID: [${mentions.user.id}]
- 
- tag user is [${mentions.user.discriminator}]
- 
- sender by ${msg.author}
- **`);
-
-}
-
-})
-
-
 client.login(process.env.BOT_TOKEN);
